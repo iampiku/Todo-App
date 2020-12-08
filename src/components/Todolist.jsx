@@ -3,11 +3,11 @@ import TodoItem from './TodoItem';
 
 import './Todolist.css';
 
-const Todolist = ({ todos, setTodos }) => {
+const Todolist = ({ todos, setTodos, filteredTodos }) => {
 	return (
 		<div className='todo-container'>
 			<ul className='todo-itmes'>
-				{todos.map((todo) => (
+				{filteredTodos.map((todo) => (
 					<TodoItem
 						setTodos={setTodos}
 						todos={todos}
