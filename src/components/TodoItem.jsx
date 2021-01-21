@@ -1,10 +1,15 @@
 import React from 'react';
 
+import Check from '../images/checked.png';
+import Tick from '../images/tick.png';
+import Delete from '../images/trash.png';
+
 const TodoItem = ({ todo, todos, setTodos }) => {
 	const handleDelete = (id) => {
 		setTodos(todos.filter((i) => i.id !== id));
 	};
 
+	// handling complete todo items;
 	const handleComplete = (id) => {
 		setTodos(
 			todos.map((i) => {
@@ -20,15 +25,17 @@ const TodoItem = ({ todo, todos, setTodos }) => {
 	};
 
 	return (
-		<div className='todo'>
-			<li className='todo-item'>{todo.text}</li>
-			<button
-				className={`incomplete ${todo.completed ? 'completed' : ''}`}
-				onClick={() => handleComplete(todo.id)}>
-				Done
+		<div className='flex justify-between bg-white rounded-md p-1 m-2'>
+			<button className='' onClick={() => handleComplete(todo.id)}>
+				<img
+					className='h-6 w-6'
+					src={todo.completed ? Check : Tick}
+					alt='tick-img'
+				/>
 			</button>
-			<button className='delete-btn' onClick={() => handleDelete(todo.id)}>
-				Delete
+			<li className='text-lg'>{todo.text}</li>
+			<button className='' onClick={() => handleDelete(todo.id)}>
+				<img className='h-6 w-6' src={Delete} alt='delete-img' />
 			</button>
 		</div>
 	);
